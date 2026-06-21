@@ -1,4 +1,4 @@
-import axios from "axios";
+import { type AxiosResponse } from "axios";
 import { useState, useEffect } from "react";
 
 type Data<T> = T | null;
@@ -10,10 +10,15 @@ interface Params {
   error: ErrorType;
 }
 
-function useFetch<T>(url: string): Params {
+// the hook uses service functions as fetch, that way the petition can be different
+// this hook only returns the data, and state of the object and petition
+function useFetch<T>(
+  serviceFunction: (signal: AbortSignal) => Promise<AxiosResponse<T>>,
+): Params {
   const [error, setError] = useState<ErrorType>(null);
-  const [data, setData] = useState<Data<T>>();
+  const [data, setData] = useState<Data<T>>(null);
   const [loading, setLoading] = useState<boolean>(true);
+
   useEffect(() => {
     const controller = new AbortController();
 
@@ -21,14 +26,12 @@ function useFetch<T>(url: string): Params {
 
     async function fetchData() {
       try {
-        const response = await axios.get(url, controller);
-
+        const response = await serviceFunction(controller.signal);
         if (response.status != 200) {
-          throw new Error("Fetch failed");
+          throw new Error("Something went wrong");
         }
-        const jsonData: T = await response.data; //parsed to jsonData
 
-        setData(jsonData);
+        setData(response.data);
         setError(null);
       } catch (err: any) {
         setError(err as Error);
@@ -43,7 +46,8 @@ function useFetch<T>(url: string): Params {
     return () => {
       controller.abort();
     };
-  }, [url]);
+  }, [serviceFunction]);
 
   return { data, loading, error };
 }
+export default useFetch;

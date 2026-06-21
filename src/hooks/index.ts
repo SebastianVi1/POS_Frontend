@@ -1,1 +1,1 @@
-export * from './useFetch.ts';
+export * from "./useFetch.ts";
