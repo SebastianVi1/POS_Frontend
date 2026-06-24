@@ -1,1 +1,3 @@
-export * from "./product.ts";
+export * from "./Product.ts";
+export * from "./User.ts";
+export * from "./Role.ts";

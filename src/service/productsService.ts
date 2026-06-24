@@ -1,4 +1,4 @@
-import type Product from "../models/product";
+import type Product from "../models/Product";
 import axios, { type AxiosResponse } from "axios";
 
 const baseUrl: string = "http://localhost:8080/api";
