@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 type Data<T> = T | null;
 type ErrorType = Error | null;
 
-interface Params {
+interface Params<T> {
   data: Data<T>;
   loading: boolean;
   error: ErrorType;
@@ -13,8 +13,8 @@ interface Params {
 // the hook uses service functions as fetch, that way the petition can be different
 // this hook only returns the data, and state of the object and petition
 function useFetch<T>(
-  serviceFunction: (signal: AbortSignal) => Promise<AxiosResponse<T>>,
-): Params {
+  serviceFunction: (signal?: AbortSignal) => Promise<AxiosResponse<T>>,
+): Params<T> {
   const [error, setError] = useState<ErrorType>(null);
   const [data, setData] = useState<Data<T>>(null);
   const [loading, setLoading] = useState<boolean>(true);
