@@ -5,13 +5,12 @@ type ErrorType = Error | null | string;
 type Data<T> = T | null;
 
 interface Params<T, D> {
-  mutateAsync: (postData: D) => Promise<T>;
+  mutantAsync: (postData: D) => Promise<T>;
   loading: boolean;
   error: ErrorType;
   data: Data<T>;
 }
 
-// ✅ Los genéricos <T, D> van aquí, inmediatamente después del nombre de la función
 export function useMutation<T, D>(
   serviceFunction: (funData: D) => Promise<AxiosResponse<T>>
 ): Params<T, D> {
@@ -20,7 +19,9 @@ export function useMutation<T, D>(
   const [error, setError] = useState<ErrorType>(null);
   const [data, setData] = useState<Data<T>>(null);
 
-  const mutateAsync = async (postData: D): Promise<T> => {
+
+  //petition 
+  const mutantAsync = async (postData: D): Promise<T> => {
     try {
       setLoading(true);
       setError(null);
@@ -46,5 +47,5 @@ export function useMutation<T, D>(
     }
   };
 
-  return { mutateAsync, loading, error, data };
+  return { mutantAsync, loading, error, data };
 }
