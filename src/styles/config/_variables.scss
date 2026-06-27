@@ -1,0 +1,25 @@
+//Global variables
+
+// --- COLOR PALETTE (Deep Tech Navy) ---
+$bg-app: #0b0f19; // Deep navy blue (Main application background)
+$bg-surface: #161b26; // Dark slate blue (Cards, tables, sidebars)
+$bg-surface-hover: #1f2635; // Hover variant for interactive surfaces
+$border-subtle: #242c3d; // Soft border to delimit layout sections
+
+$text-main: #f1f5f9; // Crisp ice-white for high legibility
+$text-muted: #64748b; // Slate gray for subtitles, SKUs, and labels
+
+$accent-action: #2563eb; // Electric cobalt blue (Primary action / Focus states)
+$text-on-accent: #ffffff; // Text color inside the primary action button
+
+// POS Status Indicators (Tailored to blend cleanly with the navy environment)
+$status-success: #10b981; // Emerald green (Successful checkout / Open drawer)
+$status-warning: #f59e0b; // Amber orange (Low stock / Pending hold)
+$status-error: #ef4444; // Coral red (Voided item / System error)
+
+// --- SPACING AND RADII ---
+$space-sm: 0.5rem;
+$space-md: 1rem;
+$space-lg: 1.5rem;
+$radius-md: 10px; // Modern, slightly rounded corners
+$transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1); // Fluid ease-in-out curve

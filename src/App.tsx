@@ -1,9 +1,14 @@
 import type { ReactElement } from "react";
-import "./App.css";
-import LoginPage from './features/auth/page/LoginPage.tsx';
+import LoginPage from './features/auth/page/LoginPage/LoginPage.tsx';
+import { AuthContextProvider } from "../context/authContext.tsx";
 
 function App(): ReactElement {
-  return <LoginPage></LoginPage>
+  return (
+    <AuthContextProvider>
+      <LoginPage></LoginPage>
+    </AuthContextProvider>
+
+  )
 }
 
 export default App;

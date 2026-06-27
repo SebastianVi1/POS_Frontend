@@ -1,8 +1,8 @@
-import { createContext, ReactNode, useContext, useState } from "react";
-import { User, UserLogin } from "../src/models/User";
+import { createContext, type ReactNode, useContext, useState } from "react";
+import { type User, type UserLogin } from "../src/models/User";
 import { loginUser } from "../src/features/auth/services/userService.ts";
-import { useMutation } from "../src/hooks/useMutantion.ts"
-import { AuthResponse } from "../src/models/AuthResponse.ts"
+import { useMutation } from "../src/hooks/useMutation.ts"
+import { type AuthResponse } from "../src/models/AuthResponse.ts"
 
 interface ContextType {
   user: User | null;
@@ -26,6 +26,7 @@ interface authProps {
 
 export const AuthContextProvider = ({ children }: authProps) => {
 
+  //POST fetch hook
   const { mutantAsync, error, loading } = useMutation<AuthResponse, UserLogin>(loginUser);
 
   const [user, setUser] = useState<User | null>(null);

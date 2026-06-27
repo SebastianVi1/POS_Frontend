@@ -1,0 +1,20 @@
+// --- REUSABLE MIXINS TO PREVENT REPETITIVE CODE (DRY) ---
+// Mixin for clean Flexbox alignment in a single line
+@mixin flex-center($direction: row, $justify: center, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: $justify;
+  gap: $gap;
+}
+
+// Mixin for unified transitions
+@mixin smooth-transition($property: all) {
+  transition: $property $transition-fast;
+}
+
+// Mixin for subtle depth that blends beautifully with dark UI surfaces
+@mixin soft-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
