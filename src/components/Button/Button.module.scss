@@ -1,0 +1,109 @@
+@use '../../styles/config/variables' as var;
+@use '../../styles/config/mixins' as m;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var.$space-sm;
+  border: none;
+  border-radius: var.$radius-md;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  line-height: 1;
+  @include m.smooth-transition;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.primary {
+  background: var.$accent-action;
+  color: var.$text-on-accent;
+
+  &:hover:not(:disabled) {
+    background: color-mix(in srgb, var.$accent-action, white 15%);
+  }
+
+  &:active:not(:disabled) {
+    background: color-mix(in srgb, var.$accent-action, black 10%);
+  }
+}
+
+.secondary {
+  background: var.$bg-surface;
+  color: var.$text-main;
+  border: 1px solid var.$border-subtle;
+
+  &:hover:not(:disabled) {
+    background: var.$bg-surface-hover;
+    border-color: var.$text-muted;
+  }
+}
+
+.ghost {
+  background: transparent;
+  color: var.$text-muted;
+
+  &:hover:not(:disabled) {
+    background: var.$bg-surface-hover;
+    color: var.$text-main;
+  }
+}
+
+.danger {
+  background: var.$status-error;
+  color: var.$text-on-accent;
+
+  &:hover:not(:disabled) {
+    background: color-mix(in srgb, var.$status-error, black 15%);
+  }
+}
+
+.sm {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+}
+
+.md {
+  padding: 0.625rem 1.25rem;
+  font-size: 0.9375rem;
+}
+
+.lg {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.0625rem;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.loading {
+  position: relative;
+  color: transparent;
+
+  > * {
+    visibility: hidden;
+  }
+}
+
+.spinner {
+  position: absolute;
+  visibility: visible;
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

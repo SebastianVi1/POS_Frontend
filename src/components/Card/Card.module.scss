@@ -1,0 +1,21 @@
+@use '../../styles/config/variables' as var;
+@use '../../styles/config/mixins' as m;
+
+.card {
+  background: var.$bg-surface;
+  border: 1px solid var.$border-subtle;
+  border-radius: var.$radius-md;
+  @include m.soft-shadow;
+}
+
+.sm {
+  padding: var.$space-sm;
+}
+
+.md {
+  padding: var.$space-md;
+}
+
+.lg {
+  padding: var.$space-lg;
+}
